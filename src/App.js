@@ -3,6 +3,8 @@ import MovieList from './components/MovieList';
 import Filter from './components/Filter';
 import './App.css';
 import NavBar1 from  './components/NavBar1' ;
+import Description from './components/Description';
+import { Route, Routes } from "react-router-dom";
 
 
 
@@ -44,6 +46,7 @@ const App = () => {
     setMovies([...movies, newMovie]);                 /*  The setMovies() function is used to update the state of the movies variable. The new state is created by using the spread operator (...) to create a copy of the current movies array and adding the newMovie object to the end of the array.    */   
   };
 
+
   return (
     <div className="App"  >
     <NavBar1/>
@@ -57,6 +60,16 @@ const App = () => {
       <button onClick={handleAddMovie} >Add Movie</button>
 
       <MovieList movies={filteredMovies} />
+
+
+
+      <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/description" element={<Description />} />
+      </Routes>
+
+
+
     </div>
   );
 };
