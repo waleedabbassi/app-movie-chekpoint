@@ -4,8 +4,8 @@ import Filter from './components/Filter';
 import './App.css';
 import NavBar1 from  './components/NavBar1' ;
 import Description from './components/Description';
-import { Route, Routes } from "react-router-dom";
-
+import { Routes, Route } from 'react-router-dom';
+import Upcoming from './components/upcoming';
 
 
 
@@ -49,27 +49,24 @@ const App = () => {
 
   return (
     <div className="App"  >
-    <NavBar1/>
+      
+      <NavBar1/> 
       <Filter                                         /* The props passed to the Filter component are titleFilter, ratingFilter, onTitleFilterChange, and onRatingFilterChange. These props are used to configure the behavior of the Filter component and allow it to communicate with the parent component.    */
         titleFilter={titleFilter}
         ratingFilter={ratingFilter}
         onTitleFilterChange={handleTitleFilterChange}         /* onTitleFilterChange and onRatingFilterChange are callback functions that will be invoked when the user changes the corresponding input fields of the Filter component. These functions will likely update the corresponding state variables in the parent component based on the user input   */
         onRatingFilterChange={handleRatingFilterChange}
-        
       />
       <button onClick={handleAddMovie} >Add Movie</button>
-
-      <MovieList movies={filteredMovies} />
-
-
-
+      
+      
+      
       <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/description" element={<Description />} />
-      </Routes>
-
-
-
+        
+      <Route path='/' element={<MovieList movies={filteredMovies} />} />
+      <Route path='/description' element={<Description />} />
+      <Route path='/upcoming' element={<Upcoming />} />
+    </Routes>
     </div>
   );
 };
